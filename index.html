@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dashboard Inspeksi Bahan Baku - AG</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.full.min.js"></script>
+  <link rel="icon" href="ag-logo.svg" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bg-overlay"></div>
+  <div class="sidebar" id="sidebar">
+    <div class="logo-box">
+      <img src="ag-logo.svg" alt="AG Logo" class="logo-img" />
+      <div class="sidebar-title">AG Inspeksi</div>
+    </div>
+    <div class="sidebar-menu" id="sidebarMenu">
+      <button data-page="dashboard" class="active"><span class="label">Dashboard</span></button>
+      <button data-page="inspeksi"><span class="label">Data Inspeksi</span></button>
+      <button data-page="export"><span class="label">Export Data</span></button>
+      <button data-page="pengaturan"><span class="label">Pengaturan</span></button>
+    </div>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+    <div class="sidebar-footer">
+      <div>Kontak: admin@agspinning.com</div>
+      <div>Email: admin@agspinning.com</div>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="page active" id="page-dashboard">
+      <h1>Dashboard Inspeksi</h1>
+      <canvas id="chartInspeksi" height="110"></canvas>
+      <div style="margin-top:30px;">
+        <h2>Ringkasan Checklist Visual</h2>
+        <canvas id="chartChecklist" height="80"></canvas>
+      </div>
+    </div>
+    <div class="page" id="page-inspeksi">
+      <h1>Data Inspeksi Bahan Baku</h1>
+      <div id="inspeksiApp"></div>
+    </div>
+    <div class="page" id="page-export">
+      <h1>Export Data Inspeksi</h1>
+      <div id="exportApp"></div>
+    </div>
+    <div class="page" id="page-pengaturan">
+      <h1>Pengaturan Admin</h1>
+      <form id="formGantiPassword" autocomplete="off">
+        <input type="password" id="oldPassword" placeholder="Password lama" required /><br />
+        <input type="password" id="newPassword" placeholder="Password baru" required /><br />
+        <input type="password" id="confirmPassword" placeholder="Konfirmasi password baru" required /><br />
+        <button type="submit">Ganti Password</button>
+      </form>
+      <div id="passwordMsg" style="color:#00ffc6;margin-top:8px;"></div>
+    </div>
+  </div>
+  <div class="login-overlay" id="loginOverlay">
+    <div class="login-box">
+      <div class="login-logo"><img src="ag-logo.svg" width="48" alt="AG" /></div>
+      <div class="login-title">AG Inspeksi</div>
+      <div class="login-error" id="loginError"></div>
+      <input type="text" id="loginUser" placeholder="Username" autofocus />
+      <input type="password" id="loginPass" placeholder="Password" />
+      <button onclick="login()">Login</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #101010;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+.sidebar { width: 240px; background: #1c1c1c; position: fixed; height: 100%; }
+.sidebar .logo-img { width: 48px; }
+.main-content { margin-left: 240px; padding: 20px; }
+.page { display: none; }
+.page.active { display: block; }
